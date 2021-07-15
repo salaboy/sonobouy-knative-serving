@@ -19,10 +19,9 @@ sonobuoy-config:
 spec:
   args:
   - kubectl cluster-info
-  - kubectl get ksvc -n default -oyaml
   command:
   - ./run.sh
-  image: salaboy/sonobuoy-knative-serving:v0.0.2
+  image: salaboy/knative-serving-conformance:v0.0.21
   name: plugin
   resources: {}
   volumeMounts:

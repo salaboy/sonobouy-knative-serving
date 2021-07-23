@@ -14,6 +14,7 @@ ENV HOME=/config
 RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get -y update && \
     apt-get -y install net-tools && \
+    apt-get -y install bc && \
     apt-get -y install curl && \
     apt-get -y install wget && \
     apt-get -y install build-essential && \

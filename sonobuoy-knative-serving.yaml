@@ -12,6 +12,10 @@ podSpec:
     operator: Exists
   - key: kubernetes.io/e2e-evict-taint-key
     operator: Exists
+  volumes:
+  - name: kubeconfig
+    secret:
+      secretName: target-cluster
 sonobuoy-config:
   driver: Job
   plugin-name: knative-serving
@@ -24,7 +28,14 @@ spec:
   image: salaboy/knative-serving-conformance:v0.0.21
   name: plugin
   resources: {}
+  env: 
+  - name: GATEWAY_OVERRIDE
+    value: kourier
+  - name: GATEWAY_NAMESPACE_OVERRIDE
+    value: kourier-system
+  - name: KO_DOCKER_REPO
+    value: salaboy  
   volumeMounts:
   - mountPath: /tmp/results
     name: results
-
+ 

@@ -14,6 +14,10 @@ saveResults() {
 
 	# Signal to the worker that we are done and where to find the results.
 	printf ${results_dir}/results.tar.gz > ${results_dir}/done
+
+	kubectl delete -f test/config/cluster-resources.yaml
+
+  kubectl delete -f test/config/test-resources.yaml
 }
 
 trap saveResults EXIT
@@ -30,12 +34,11 @@ kubectl apply -f test/config/cluster-resources.yaml
 kubectl apply -f test/config/test-resources.yaml
 
 
-export KUBECONFIG=
+export KUBECONFIG=$HOME/.kube/config
 
+echo $KUBECONFIG
 
-export GATEWAY_OVERRIDE=kourier
-export GATEWAY_NAMESPACE_OVERRIDE=kourier-system
-export KO_DOCKER_REPO=salaboy
+cat $KUBECONFIG
 
 
 export TESTS=($(grep "func Test" test/conformance/**/*.go | awk '{print $2}' | awk -F\( '{print $1}'))

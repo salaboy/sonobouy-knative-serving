@@ -2,6 +2,8 @@
 
 This repository contains a [Sonobuoy]() Plugin which allows you execute Knative Serving Conformance Tests (located here) against a Kubernetes Cluster that has Knative Serving installed. 
 
+For more details visit the following [Blog Post](https://salaboy.com/2021/07/23/knative-oss-diaries-week-3/)
+
 Install Knative Serving: [https://knative.dev/docs/admin/install/serving/install-serving-with-yaml/](https://knative.dev/docs/admin/install/serving/install-serving-with-yaml/)
 
 
